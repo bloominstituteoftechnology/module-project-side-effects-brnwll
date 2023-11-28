@@ -2,14 +2,20 @@
 // Use a piece of data coming in through props to display the correct number of likes.
 // You will also add an onClick handler that utilizes `likePost` to increase the count of likes.
 // (As a stretch goal, you might want to prevent your user from "liking" the same post more than once.)
-import React from 'react';
+import React, { useState } from 'react';
 
 const LikeSection = props => {
   // 🔥 Make sure the parent of LikeSection is passing the right props! ✅
   const { likePost, numberOfLikes } = props;
+  const [hasLiked, setHasLiked] = useState(false)
 
+  const likePostOnlyOnce = () => {
+    if (!hasLiked) {
+      likePost()
+      setHasLiked(!hasLiked)
+    }
+  }
   
-
   return (
     <div>
       <div
@@ -17,7 +23,7 @@ const LikeSection = props => {
         key='likes-icons-container'
       >
         <div
-          onClick={likePost}
+          onClick={likePostOnlyOnce}
           className='like-section-wrapper'
         >
           ❤️
