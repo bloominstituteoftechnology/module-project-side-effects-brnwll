@@ -20,8 +20,6 @@ const App = () => {
   const [posts, setPosts] = useState(data)
   // TODO: searchbar state
 
-  console.log(posts)
-
   const likePost = postId => {
     /*
       This function serves the purpose of increasing the number of likes by one, of the post with a given id.
@@ -33,7 +31,6 @@ const App = () => {
         - otherwise just return the post object unchanged.
       ✅
      */
-    console.log('likePost ' + postId)
     setPosts(posts.map(p => {
       return (p.id === postId)
         ? { ...p, likes: p.likes + 1 }
